@@ -1,0 +1,30 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: knative-crud-api
+  namespace: tutorial-api
+spec:
+  template:
+    spec:
+      containers:
+        - image: quay.io/swinches/tutorial-crud-api:latest
+          env:
+          - name: DATABASE_SERVICE_NAME
+            value: tutorial1-tutorial-crud-api-mongo
+          - name: MONGODB_USER
+            valueFrom:
+              secretKeyRef:
+                key: database-user
+                name: tutorial1-tutorial-crud-api
+          - name: MONGODB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: database-password
+                name: tutorial1-tutorial-crud-api
+          - name: MONGODB_DATABASE
+            value: sampledb
+          - name: MONGODB_ADMIN_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: database-admin-password
+                name: tutorial1-tutorial-crud-api
