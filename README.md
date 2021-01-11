@@ -2,6 +2,8 @@
 
 Simple api to post/get tutorial model from a mongodb.  Uses express.
 
+Based on: https://bezkoder.com/node-express-mongodb-crud-rest-api/
+
 
 ### Environment variables to set:
 ```
@@ -18,7 +20,7 @@ MONGODB_PASSWORD=
 export DATABASE_SERVICE_NAME=MONGODB
 export MONGODB_SERVICE_HOST=localhost
 export MONGODB_SERVICE_PORT=27017
-export MONGODB_DATABASE=somedb
+export MONGODB_DATABASE=swinches
 ```
 
 
