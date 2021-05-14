@@ -2,7 +2,7 @@ apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
   name: knative-crud-api
-  namespace: tutorial-api
+  namespace: serverless-demo
 spec:
   template:
     spec:
@@ -11,6 +11,8 @@ spec:
           env:
           - name: DATABASE_SERVICE_NAME
             value: tutorial1-tutorial-crud-api-mongo
+          - name: TUTORIAL1_TUTORIAL_CRUD_API_MONGO_SERVICE_HOST
+            value: 172.30.242.244
           - name: MONGODB_USER
             valueFrom:
               secretKeyRef:

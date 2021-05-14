@@ -13,8 +13,18 @@ if (mongoURL == null) {
       console.log('DATABASE_SERVICE_NAME: ' + process.env.DATABASE_SERVICE_NAME.toUpperCase());
       var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase().replace(/-/g, '_');
       console.log('mongoServiceName: ' + mongoServiceName);
-      mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'];
-      mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'];
+
+      if(process.env[mongoServiceName + '_SERVICE_HOST']){
+        mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'];
+      }else{
+        mongoHost = mongoServiceName;
+      }
+
+      if(process.env[mongoServiceName + '_SERVICE_PORT']){
+        mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'];
+      }else{
+        mongoPort = 27017;
+      }
 
       mongoDatabase = process.env['MONGODB_DATABASE'];
       mongoPassword = process.env['MONGODB_PASSWORD'];
